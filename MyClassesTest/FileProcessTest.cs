@@ -8,8 +8,25 @@ namespace MyClassesTest
     {
         private const string BAD_FILE_NAME = @"C:\lenaTest\notfound.txt";
 
-        
+        [ClassInitialize()]
+        public static void ClassInitialize(TestContext tc)
+        {
+            //initialize for all tests in a class
+            tc.WriteLine("In Class initialize() method");
+        }
+
+        [ClassCleanup]
+        public static void ClassCleanup()
+        {
+            //clean after all tests in class
+        }
+
         [TestMethod]
+        [Description("check to see if file is exist")]
+        [Owner("Lena")]
+        [Priority(1)]
+        [TestCategory("No exception")]
+
         public void FileNameDoesExist()
         {
             //Arrange
